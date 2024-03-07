@@ -6,7 +6,7 @@ const App = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors },getValues
   } = useForm();
   const password = watch("password");
 
@@ -92,7 +92,7 @@ const App = () => {
               {...register("confirmPassword", {
                 required: "Confirm Password is required",
                 validate: (value) =>
-                  value === password || "Passwords does not match",
+                  value ===getValues('password')|| "Passwords does not match",
               })}
             />
             {errors.confirmPassword && (
